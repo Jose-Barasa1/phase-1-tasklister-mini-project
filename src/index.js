@@ -7,7 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', (event) => {
         event.preventDefault();
         const taskDescription = document.getElementById('new-task-description').value;
+        const user =document.getElementById('user').value;
         const dueDate = document.getElementById('dueDateInput').value;
+        const time = document.getElementById('duration').value;
         const priority = document.getElementById('priorityInput').value;
         if (taskDescription === '') {
             alert('Task description cannot be empty!');
@@ -15,7 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         const task = {
             description: taskDescription,
+            username:user,
             dueDate: dueDate || 'No due date',
+            time:time,
             priority: priority,
         };
         tasksArray.push(task);
@@ -25,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
             tasksList.innerHTML = '';
             tasks.forEach((task, index) => {
                 const li = document.createElement('li');
-                li.innerHTML = `${task.description} - Due: ${task.dueDate} - Priority: ${task.priority}
+                li.innerHTML = ` Task at hand :${task.description}  - Username:${task.username} - Due: ${task.dueDate} -Finished By ${time}- Priority: ${task.priority}
                                 <button class="delete-btn" data-index="${index}">Delete</button>`;
                 tasksList.appendChild(li);
                 });
